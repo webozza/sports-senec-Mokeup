@@ -1,0 +1,140 @@
+/* Sport Sense header skin — keeps Horizon's native menu, drawer and cart behaviour. */
+:root {
+  --ss-orange: #ff5a00;
+  --ss-orange-dark: #db4b00;
+  --ss-ink: #111111;
+  --ss-soft: #f7f5f2;
+  --ss-line: #e9e5e1;
+}
+
+/* Announcement bar */
+#header-group .announcement-bar {
+  color: #fff;
+  background: var(--ss-orange);
+}
+
+#header-group .announcement-bar__text,
+#header-group .announcement-bar a {
+  color: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* Main header */
+#header-component {
+  --header-padding: 18px;
+  --header-content-transition-timing: .22s ease;
+  border-bottom: 1px solid rgb(17 17 17 / 6%);
+}
+
+#header-component .header__row--top {
+  min-height: 88px;
+}
+
+#header-component .header-logo img,
+#header-component .header-logo svg {
+  transition: transform .24s ease;
+}
+
+#header-component .header-logo:hover img,
+#header-component .header-logo:hover svg {
+  transform: scale(1.035);
+}
+
+#header-component .header-actions__action,
+#header-component .header__icon--menu {
+  color: var(--ss-ink);
+  transition: color .2s ease, transform .2s ease, background-color .2s ease;
+}
+
+#header-component .header-actions__action:hover,
+#header-component .header__icon--menu:hover {
+  color: var(--ss-orange);
+  transform: translateY(-1px);
+}
+
+#header-component .cart-bubble {
+  color: #fff;
+  background: var(--ss-orange);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+/* Full desktop menu: Sport Sense pill navigation */
+@media screen and (min-width: 1600px) {
+  #header-component[data-menu-style='menu'] .header__columns {
+    column-gap: 28px;
+  }
+
+  #header-component[data-menu-style='menu'] header-menu {
+    display: block;
+    max-width: 100%;
+  }
+
+  #header-component[data-menu-style='menu'] header-menu overflow-list::part(list) {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 6px;
+    border: 1px solid #eee9e4;
+    border-radius: 999px;
+    background: var(--ss-soft);
+    box-shadow: 0 8px 22px rgb(0 0 0 / 2.5%);
+  }
+
+  #header-component[data-menu-style='menu'] .menu-list__link {
+    padding: 11px 16px;
+    border-radius: 999px;
+    color: var(--ss-ink);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 1;
+    text-transform: uppercase;
+    transition: color .22s ease, background-color .22s ease, box-shadow .22s ease, transform .22s ease;
+  }
+
+  #header-component[data-menu-style='menu'] .menu-list__link:hover,
+  #header-component[data-menu-style='menu'] .menu-list__link[aria-current='page'],
+  #header-component[data-menu-style='menu'] .menu-list__link[aria-expanded='true'] {
+    color: var(--ss-orange);
+    background: #fff;
+    box-shadow: 0 6px 15px rgb(0 0 0 / 5%);
+    transform: translateY(-1px);
+  }
+}
+
+/* Horizon native drawer below 1600px — no fake off-screen menu / no horizontal overflow. */
+@media screen and (max-width: 1599px) {
+  #header-component {
+    --header-padding: 14px;
+  }
+
+  #header-component .header__row--top {
+    min-height: 72px;
+  }
+
+  #header-component .header__icon--menu {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--ss-line);
+    border-radius: 50%;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  #header-group .announcement-bar__text,
+  #header-group .announcement-bar a {
+    font-size: 11px;
+  }
+
+  #header-component .header-logo img,
+  #header-component .header-logo svg {
+    max-height: 44px;
+  }
+}

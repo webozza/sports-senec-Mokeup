@@ -68,6 +68,18 @@ Horizon-er font picker-e `Arial Black` na thakle closest heavy/condensed heading
 5. Footer ar Built to Honor near-black hobe.
 6. Extra blue, green ba notun accent colour use kora jabe na.
 
+## 3.1 Container rule
+
+Desktop design-er main content container hobe **1800px max-width**.
+
+```css
+--ss-container: 1800px;
+```
+
+Use hobe header, hero, product grid, category slider, feature section ar footer-er main content-e. Background / full-width section edge-to-edge thakbe, kintu content 1800px-er vitore aligned thakbe.
+
+Mobile-e container fixed 1800px hobe na; Horizon-er normal responsive side padding use korbe.
+
 ## 4. Horizon Theme Settings-e setup
 
 Shopify Admin → **Online Store → Themes → Customize → Theme settings**
@@ -126,6 +138,7 @@ Horizon-er custom CSS ba dedicated Sport Sense stylesheet-e use koro:
   --ss-muted: #6b6b6b;
   --ss-muted-on-dark: #aaaaaa;
   --ss-radius: 18px;
+  --ss-container: 1800px;
 }
 
 h1, h2, h3, .sport-sense-display {
