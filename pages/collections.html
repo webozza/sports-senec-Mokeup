@@ -13,6 +13,16 @@
     .collection-cta{margin-top:58px;padding:35px 40px;display:flex;justify-content:space-between;align-items:center;gap:25px;border-radius:16px;color:#fff;background:linear-gradient(105deg,#101010,#222)}.collection-cta h2{margin:0;font-family:"Arial Black",Impact,Arial,sans-serif;font-size:32px;line-height:.95;text-transform:uppercase}.collection-cta h2 span{color:var(--orange)}.collection-cta p{margin:10px 0 0;color:#aaa;font-size:16px}.cta-btn{display:inline-flex;align-items:center;gap:11px;min-height:47px;padding:0 10px 0 19px;border:1px solid rgba(255,255,255,.25);border-radius:999px;font-size:14px;font-weight:900;text-transform:uppercase;white-space:nowrap}.cta-btn b{width:29px;height:29px;display:grid;place-items:center;border:1px solid var(--orange);border-radius:50%;color:var(--orange);font-size:17px}.footer{padding:30px 0;color:#aaa;background:#111;font-size:14px}.footer-in{display:flex;justify-content:space-between;gap:20px}.footer strong{color:#fff}
     .topbar,.nav a,.eyebrow,.content-head p,.filter-title,.filter-group label,.filter-group em,.sort select,.tag,.quick-add,.product-meta h3,.product-meta p,.product-meta strong{font-size:14px}
     @media(max-width:1000px){.nav{gap:0}.nav a{padding:10px 8px;font-size:9px}.collection-layout{grid-template-columns:175px 1fr}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.container{width:min(calc(100% - 30px),var(--container))}.topbar span:not(:first-child){display:none}.header-in{grid-template-columns:1fr auto;min-height:68px}.nav{display:none}.hero-in{grid-template-columns:1fr}.collection-hero{padding:50px 0 35px}.hero-art{height:210px}.collection-layout{grid-template-columns:1fr}.filters{display:none}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.collection-cta{padding:27px;align-items:flex-start;flex-direction:column}.collection-cta h2{font-size:27px}.footer-in{flex-direction:column}}
+    /* Mobile navigation and small-screen layout */
+    .mobile-trigger,.mobile-overlay{display:none}
+    @media(max-width:760px){
+      body{overflow-x:hidden}.header-in{grid-template-columns:1fr auto auto;gap:12px}.logo{width:112px}
+      .mobile-trigger{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--black);cursor:pointer}.mobile-trigger svg{width:21px}
+      .header .nav.mobile-nav{position:fixed;z-index:60;top:0;right:0;width:min(86vw,340px);height:100dvh;display:flex;align-items:stretch;justify-content:flex-start;flex-direction:column;gap:4px;padding:88px 18px 24px;border:0;border-radius:0;background:#fff;box-shadow:-18px 0 45px rgba(0,0,0,.15);transform:translateX(105%);transition:transform .28s ease}.header .nav.mobile-nav.is-open{transform:translateX(0)}.header .nav.mobile-nav a{padding:16px 14px;font-size:14px}.mobile-overlay{position:fixed;z-index:55;inset:0;background:rgba(0,0,0,.42)}.mobile-overlay.is-open{display:block}
+      .collection-hero{padding:35px 0 25px}.collection-hero:after{width:260px;height:260px;right:-85px;top:40px}.hero-art{height:175px}.hero-art img{max-height:195px}.content{padding:40px 0 60px}.content-head{align-items:flex-start;flex-direction:column;margin-bottom:20px}.content-head h2{font-size:28px}.product-meta{padding-top:10px}.quick-add{opacity:1;transform:translate(-50%,0);bottom:10px}.collection-cta{margin-top:38px;padding:24px}.footer-in{gap:12px;text-align:center;align-items:center}
+    }
+    @media(max-width:480px){.product-grid{grid-template-columns:1fr 1fr;gap:10px}.product-meta h3{font-size:14px}.product-meta strong{font-size:14px}.product-image{border-radius:12px}.quick-add{min-width:116px;padding:10px;font-size:12px}}
+    @media(max-width:760px){.mobile-overlay{background:transparent}.header .nav.mobile-nav{box-shadow:none}}
   </style>
 </head>
 <body>
@@ -39,5 +49,14 @@
       });
     });
   </script>
+<script>
+  (() => {
+    const header = document.querySelector('.header'); const nav = header?.querySelector('.nav'); const host = header?.querySelector('.header-in'); if (!header || !nav || !host) return;
+    const trigger = document.createElement('button'); trigger.type = 'button'; trigger.className = 'mobile-trigger'; trigger.setAttribute('aria-label', 'Open menu'); trigger.setAttribute('aria-expanded', 'false'); trigger.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>'; host.appendChild(trigger); nav.classList.add('mobile-nav');
+    const overlay = document.createElement('div'); overlay.className = 'mobile-overlay'; document.body.appendChild(overlay);
+    const close = () => { nav.classList.remove('is-open'); overlay.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); };
+    trigger.addEventListener('click', () => { const open = nav.classList.toggle('is-open'); overlay.classList.toggle('is-open', open); trigger.setAttribute('aria-expanded', String(open)); }); overlay.addEventListener('click', close); nav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  })();
+</script>
 </body>
 </html>
