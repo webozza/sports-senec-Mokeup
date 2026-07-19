@@ -630,6 +630,15 @@ body.cart-open{overflow:hidden}body.cart-open .cart-overlay{opacity:1;visibility
   .site-header .nav.mobile-nav{right:0!important;transform:none!important;opacity:0;visibility:hidden;pointer-events:none;clip-path:inset(0 0 0 100%);transition:clip-path .28s ease,opacity .2s ease,visibility 0s linear .28s}
   .site-header .nav.mobile-nav.is-open{opacity:1;visibility:visible;pointer-events:auto;clip-path:inset(0);transition:clip-path .28s ease,opacity .2s ease}
 }
+@media(max-width:1600px){
+  .site-header .header-inner{grid-template-columns:42px 1fr auto}
+  .site-header .mobile-menu{display:grid}
+  .site-header .logo{justify-self:center}
+  .site-header .nav{display:none!important}
+  .site-header .nav.mobile-nav.is-open{position:fixed;z-index:60;top:0;right:0;width:min(84vw,360px);height:100dvh;display:flex!important;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:3px;padding:88px 20px 24px;border:0;border-radius:0;color:#151515;background:#fff;box-shadow:none;transform:none!important;opacity:1;visibility:visible;pointer-events:auto;clip-path:none}
+  .site-header .nav.mobile-nav.is-open a{padding:16px 14px;font-size:14px}
+  .mobile-overlay{background:transparent!important}
+}
 </style>
 </head>
 <body>
