@@ -441,9 +441,9 @@ button,input{font:inherit}
 .footer{padding:52px 0 24px;color:#fff;background:#101010}
 .footer-grid{
   display:grid;grid-template-columns:1.35fr .8fr .95fr 1.15fr;
-  gap:30px;
+  gap:30px;align-items:start;
 }
-.footer-grid>div:first-child{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding-bottom:27px;border-bottom:1px solid rgba(255,255,255,.1);text-align:center}
+.footer-grid>div:first-child{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;justify-self:stretch;gap:12px;padding-bottom:27px;border-bottom:1px solid rgba(255,255,255,.1);text-align:center}
 .footer-grid>div:nth-child(4){display:none}
 .footer-grid>div:nth-child(5){display:block;grid-column:4;grid-row:2}
 .footer-grid>div:nth-child(6){grid-column:1;grid-row:2}
@@ -718,7 +718,7 @@ body.cart-open{overflow:hidden}body.cart-open .cart-overlay{opacity:1;visibility
       <div>
         <h2>Built to <span>honor.</span><br>Made to inspire.</h2>
         <p>Every award tells a story. Make yours unforgettable.</p>
-        <a href="collections.html" class="btn btn-secondary">Explore collection <span class="feature-arrow">→</span></a>
+        <a href="pages/collections.html" class="btn btn-secondary">Explore collection <span class="feature-arrow">→</span></a>
       </div>
 
       <div class="feature-list">
@@ -769,7 +769,7 @@ body.cart-open{overflow:hidden}body.cart-open .cart-overlay{opacity:1;visibility
       <div class="eyebrow">Why choose Sport Sense</div>
       <h2>Awards that speak <span>excellence.</span></h2>
       <p>We combine quality craftsmanship with outstanding service to deliver awards you’ll be proud to give.</p>
-      <a href="about.html" class="small-link">About us <i>→</i></a>
+      <a href="pages/about.html" class="small-link">About us <i>→</i></a>
     </div>
 
     <article class="why-card">
@@ -878,7 +878,7 @@ body.cart-open{overflow:hidden}body.cart-open .cart-overlay{opacity:1;visibility
       });
       card.addEventListener('click', event => {
         if (event.target.closest('button')) return;
-        window.location.href = 'product-victory-cup.html';
+        window.location.href = 'pages/product-victory-cup.html';
       });
       card.style.cursor = 'pointer';
     });
