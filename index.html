@@ -639,6 +639,13 @@ body.cart-open{overflow:hidden}body.cart-open .cart-overlay{opacity:1;visibility
   .site-header .nav.mobile-nav.is-open a{padding:16px 14px;font-size:14px}
   .mobile-overlay{background:transparent!important}
 }
+@media(max-width:1600px){
+  .site-header .nav.mobile-nav.is-open{animation:menuDrawerIn .32s cubic-bezier(.22,.8,.2,1) both}
+  .site-header .nav.mobile-nav.is-open a{animation:menuItemIn .3s ease both}
+  .site-header .nav.mobile-nav.is-open a:nth-child(1){animation-delay:.04s}.site-header .nav.mobile-nav.is-open a:nth-child(2){animation-delay:.08s}.site-header .nav.mobile-nav.is-open a:nth-child(3){animation-delay:.12s}.site-header .nav.mobile-nav.is-open a:nth-child(4){animation-delay:.16s}.site-header .nav.mobile-nav.is-open a:nth-child(5){animation-delay:.2s}.site-header .nav.mobile-nav.is-open a:nth-child(6){animation-delay:.24s}
+}
+@keyframes menuDrawerIn{from{opacity:0;clip-path:inset(0 0 0 100%)}to{opacity:1;clip-path:inset(0)}}
+@keyframes menuItemIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>

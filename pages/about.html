@@ -16,7 +16,14 @@
     @media(max-width:1050px){html,body{max-width:100%;overflow-x:clip!important}.header .nav{display:none!important}.header .nav.mobile-nav{display:flex!important;right:0!important;transform:none!important;opacity:0;visibility:hidden;pointer-events:none;clip-path:inset(0 0 0 100%);transition:clip-path .28s ease,opacity .2s ease,visibility 0s linear .28s}.header .nav.mobile-nav.is-open{opacity:1;visibility:visible;pointer-events:auto;clip-path:inset(0);transition:clip-path .28s ease,opacity .2s ease}.mobile-overlay{background:transparent}.header .nav.mobile-nav{box-shadow:none}}
     @media(max-width:1050px){.header-in{grid-template-columns:1fr auto auto;gap:12px}.mobile-trigger{display:grid}}
     @media(max-width:1600px){.header-in{grid-template-columns:1fr auto auto;gap:12px}.mobile-trigger{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--black);cursor:pointer}.mobile-trigger svg{width:21px}.header .nav{display:none!important}.header .nav.mobile-nav.is-open{position:fixed;z-index:60;top:0;right:0;width:min(84vw,360px);height:100dvh;display:flex!important;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:3px;padding:88px 20px 24px;border:0;border-radius:0;background:#fff;box-shadow:none;transform:none!important;opacity:1;visibility:visible;pointer-events:auto;clip-path:none}.header .nav.mobile-nav.is-open a{padding:16px 14px;font-size:14px}.mobile-overlay{background:transparent!important}}
-  </style>
+@media(max-width:1600px){
+  .header .nav.mobile-nav.is-open{animation:menuDrawerIn .32s cubic-bezier(.22,.8,.2,1) both}
+  .header .nav.mobile-nav.is-open a{animation:menuItemIn .3s ease both}
+  .header .nav.mobile-nav.is-open a:nth-child(1){animation-delay:.04s}.header .nav.mobile-nav.is-open a:nth-child(2){animation-delay:.08s}.header .nav.mobile-nav.is-open a:nth-child(3){animation-delay:.12s}.header .nav.mobile-nav.is-open a:nth-child(4){animation-delay:.16s}.header .nav.mobile-nav.is-open a:nth-child(5){animation-delay:.2s}.header .nav.mobile-nav.is-open a:nth-child(6){animation-delay:.24s}
+}
+@keyframes menuDrawerIn{from{opacity:0;clip-path:inset(0 0 0 100%)}to{opacity:1;clip-path:inset(0)}}
+@keyframes menuItemIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+</style>
 </head>
 <body>
   <div class="topbar">Celebrate · Customise · Promote</div>
