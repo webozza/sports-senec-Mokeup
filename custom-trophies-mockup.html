@@ -55,13 +55,16 @@ button,input{font:inherit}
   border-bottom:1px solid rgba(0,0,0,.055);
 }
 .header-inner{
-  min-height:84px;
+  min-height:110px;
   display:grid;grid-template-columns:205px 1fr auto;
   align-items:center;gap:24px;
 }
 .logo{width:116px;transition:.25s ease}
 .logo:hover{transform:scale(1.035)}
-.logo img{width:100%}
+.logo img{
+  width:100%;
+  content:url("assets/sportsense-logo.png");
+}
 
 .nav{
   justify-self:center;display:flex;align-items:center;gap:3px;
@@ -79,6 +82,7 @@ button,input{font:inherit}
   transform:translateY(-1px);
   box-shadow:0 7px 18px rgba(0,0,0,.07);
 }
+.nav a.active{color:var(--orange);background:#fff;box-shadow:0 5px 14px rgba(0,0,0,.05)}
 
 .header-actions{display:flex;align-items:center;gap:5px}
 .icon-btn{
@@ -114,28 +118,28 @@ button,input{font:inherit}
   background-size:90px 90px;
 }
 .hero-inner{
-  min-height:570px;position:relative;z-index:1;
-  display:grid;grid-template-columns:.92fr 1.08fr;
-  align-items:center;gap:28px;
+  min-height:750px;position:relative;z-index:1;
+  display:grid;grid-template-columns:.88fr 1.12fr;
+  align-items:center;gap:0;
 }
 .eyebrow{
   display:flex;align-items:center;gap:10px;
-  margin-bottom:21px;
+  margin-bottom:20px;
   font-size:10px;font-weight:900;
   text-transform:uppercase;letter-spacing:.075em;
 }
 .eyebrow:before{content:"";width:32px;height:2px;background:var(--orange)}
 .hero h1{
-  max-width:670px;margin-bottom:22px;
+  max-width:620px;margin-bottom:20px;
   font-family:"Arial Black",Impact,Arial,sans-serif;
-  font-size:clamp(58px,6vw,94px);
-  line-height:.89;letter-spacing:-.065em;
+  font-size:clamp(56px,4.8vw,76px);
+  line-height:.9;letter-spacing:-.06em;
   text-transform:uppercase;
 }
 .hero h1 span{color:var(--orange)}
 .hero-copy{
-  max-width:465px;margin-bottom:27px;
-  color:var(--muted);font-size:17px;
+  max-width:405px;margin-bottom:25px;
+  color:var(--muted);font-size:15px;
 }
 .button-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .btn{
@@ -165,8 +169,8 @@ button,input{font:inherit}
 .btn:hover .btn-circle{transform:translateX(4px) rotate(-8deg)}
 
 .hero-trust{
-  margin-top:36px;
-  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  margin-top:32px;
+  display:flex;align-items:center;gap:22px;flex-wrap:wrap;
 }
 .trust-item{
   display:flex;align-items:center;gap:9px;
@@ -180,37 +184,38 @@ button,input{font:inherit}
 }
 
 .hero-art{
-  min-height:500px;position:relative;
+  min-height:660px;position:relative;
   display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
 }
 .hero-art:before{
   content:"";position:absolute;
-  width:520px;height:520px;border-radius:50%;
+  width:600px;height:600px;border-radius:25%;
   background:radial-gradient(circle at 38% 28%,#fff,#ebe6df);
   box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);
 }
 .hero-product{
+  content:url("assets/sportsense-hero-transparent.png");
   position:relative;z-index:2;
-  width:min(540px,86%);
+  width:min(650px,98%);max-height:570px;
+  object-fit:contain;object-position:center bottom;
   transition:.45s cubic-bezier(.2,.7,.2,1);
-  filter:drop-shadow(0 28px 30px rgba(0,0,0,.11));
+  filter:none;
+  mix-blend-mode:normal;
+  transform:none;
 }
 .hero-art:hover .hero-product{
-  transform:translateY(-7px) scale(1.015);
+  transform:none;
 }
 .hero-accent{
-  position:absolute;right:-48px;bottom:12px;
-  width:205px;height:205px;
-  border-right:16px solid var(--orange);
-  border-bottom:16px solid var(--orange);
-  transform:skewX(-18deg);
+  display:none;
 }
 .info-stack{
-  position:absolute;right:0;top:115px;z-index:4;
+  position:absolute;right:10px;top:104px;z-index:4;
   display:grid;gap:10px;
 }
 .info-card{
-  width:175px;padding:14px 16px;
+  width:250px;padding:13px 15px;
   display:flex;align-items:center;gap:10px;
   background:rgba(255,255,255,.94);
   border:1px solid #ebe7e2;border-radius:14px;
@@ -256,18 +261,36 @@ button,input{font:inherit}
 }
 .product-card{min-width:0;transition:.28s ease}
 .product-image{
-  aspect-ratio:1/1.02;padding:14px;
-  display:grid;place-items:center;
+  aspect-ratio:1/1.02;padding:18px;
+  display:grid;place-items:center;position:relative;
   border:1px solid #eee9e4;border-radius:15px;
   background:linear-gradient(145deg,#f3f0ec,#fff);
   overflow:hidden;
   transition:.3s ease;
 }
 .product-image img{
-  width:100%;height:100%;object-fit:contain;
+  width:100%;height:100%;max-width:90%;max-height:90%;
+  object-fit:contain;object-position:center;
   mix-blend-mode:multiply;
   transition:.4s cubic-bezier(.2,.7,.2,1);
 }
+.product-image::after{
+  content:"Add to cart  +";
+  position:absolute;left:50%;bottom:16px;z-index:2;
+  min-width:132px;padding:12px 16px;border-radius:999px;
+  color:#fff;background:#171717;
+  font-size:10px;font-weight:900;letter-spacing:.02em;text-align:center;
+  text-transform:uppercase;white-space:nowrap;
+  opacity:0;pointer-events:none;
+  transform:translate(-50%,12px);
+  transition:.25s ease;
+  box-shadow:0 12px 22px rgba(0,0,0,.18);
+}
+#products .product-card:nth-child(1) .product-image img{content:url("assets/product-gold-cup.png")}
+#products .product-card:nth-child(2) .product-image img{content:url("assets/product-silver-cup.png")}
+#products .product-card:nth-child(3) .product-image img{content:url("assets/product-crystal-peak.png")}
+#products .product-card:nth-child(4) .product-image img{content:url("assets/product-classic-medal.png")}
+#products .product-card:nth-child(5) .product-image img{content:url("assets/product-prestige-award.png")}
 .product-meta{
   margin-top:12px;
   display:grid;grid-template-columns:1fr auto;gap:9px;
@@ -280,41 +303,51 @@ button,input{font:inherit}
   border-color:rgba(255,90,0,.27);
   box-shadow:var(--shadow);
 }
-.product-card:hover .product-image img{transform:scale(1.08)}
+.product-card:hover .product-image img{transform:translateY(4px) scale(1.03)}
+.product-card:hover .product-image::after{opacity:1;transform:translate(-50%,0)}
 .product-card:hover h3{color:var(--orange)}
 
 .feature-panel{
   position:relative;overflow:hidden;
-  min-height:220px;padding:34px;
-  display:grid;grid-template-columns:1.05fr 2fr;
-  align-items:center;gap:32px;
+  min-height:290px;padding:38px 252px 38px 42px;
+  display:grid;grid-template-columns:365px minmax(0,1fr);
+  align-items:center;gap:34px;
   border-radius:18px;
-  color:#fff;background:
+  color:#fff;
+  background-color:#111;
+  background-image:
+    url("assets/sportsense-built-to-honor.png"),
     radial-gradient(circle at 88% 42%,rgba(255,90,0,.12),transparent 27%),
     linear-gradient(120deg,#0b0b0b,#181818);
+  background-position:right -4px bottom -12px,center,center;
+  background-size:auto 108%,auto,auto;
+  background-repeat:no-repeat;
   box-shadow:0 14px 35px rgba(0,0,0,.09);
   transition:.3s ease;
 }
 .feature-panel:hover{transform:translateY(-5px);box-shadow:0 24px 48px rgba(0,0,0,.16)}
 .feature-panel h2{
   font-family:"Arial Black",Impact,Arial,sans-serif;
-  font-size:clamp(34px,4vw,58px);
-  line-height:.94;letter-spacing:-.05em;text-transform:uppercase;
+  max-width:360px;
+  font-size:clamp(34px,3.05vw,37px);
+  line-height:.96;letter-spacing:-.045em;text-transform:uppercase;
 }
 .feature-panel h2 span{color:var(--orange)}
-.feature-panel p{margin:15px 0 22px;max-width:330px;color:#aaa}
+.feature-panel p{margin:15px 0 21px;max-width:290px;color:#aaa}
+.feature-panel .btn-secondary{min-height:46px;padding:0 8px 0 18px;color:#fff;background:transparent;border-color:rgba(255,255,255,.22)}
+.feature-panel .btn-secondary:hover{color:#fff;border-color:var(--orange);background:rgba(255,90,0,.09)}
+.feature-arrow{width:30px;height:30px;display:grid;place-items:center;border:1px solid var(--orange);border-radius:50%;color:var(--orange);font-size:18px;line-height:1;transition:.2s ease}
+.feature-panel .btn-secondary:hover .feature-arrow{color:#111;background:var(--orange)}
 .feature-list{
   position:relative;z-index:2;
   display:grid;grid-template-columns:repeat(4,1fr);
 }
-.feature-item{padding:12px 22px;border-left:1px solid rgba(255,255,255,.12)}
-.feature-item svg{width:31px;height:31px;margin-bottom:16px;color:var(--orange)}
-.feature-item h3{font-size:11px;text-transform:uppercase;margin-bottom:6px}
+.feature-item{padding:10px 16px;border-left:1px solid rgba(255,255,255,.14)}
+.feature-item svg{width:38px;height:38px;margin-bottom:13px;color:var(--orange)}
+.feature-item h3{font-size:10px;line-height:1.15;text-transform:uppercase;margin-bottom:6px}
 .feature-item p{margin:0;color:#aaa;font-size:10px}
 .feature-trophy{
-  position:absolute;right:0;bottom:0;
-  width:130px;height:185px;object-fit:cover;
-  opacity:.74;mix-blend-mode:screen;
+  display:none;
 }
 
 .category-grid{
@@ -327,7 +360,7 @@ button,input{font:inherit}
   background:#fff;transition:.3s ease;
 }
 .category-image{
-  height:150px;padding:13px;
+  height:150px;
   display:grid;place-items:center;
   background:linear-gradient(145deg,#faf8f5,#f0ece7);
   overflow:hidden;
@@ -337,6 +370,12 @@ button,input{font:inherit}
   mix-blend-mode:multiply;
   transition:.4s cubic-bezier(.2,.7,.2,1);
 }
+#categories .category-card:nth-child(1) .category-image img{content:url("assets/category-gold-trophy.png")}
+#categories .category-card:nth-child(2) .category-image img{content:url("assets/category-gold-medal.png")}
+#categories .category-card:nth-child(3) .category-image img{content:url("assets/category-plaque.png")}
+#categories .category-card:nth-child(4) .category-image img{content:url("assets/category-crystal-award.png")}
+#categories .category-card:nth-child(5) .category-image img{content:url("assets/category-soccer-trophy.png")}
+#categories .category-card:nth-child(6) .category-image img{content:url("assets/category-gift-box.png")}
 .category-card h3{
   padding:14px;text-align:center;
   font-size:11px;text-transform:uppercase;
@@ -346,12 +385,12 @@ button,input{font:inherit}
   border-color:rgba(255,90,0,.28);
   box-shadow:var(--shadow);
 }
-.category-card:hover img{transform:scale(1.09)}
+.category-card:hover img{transform:translateY(4px) scale(1.03)}
 .category-card:hover h3{color:var(--orange)}
 
 .why-grid{
   display:grid;grid-template-columns:1.15fr repeat(4,1fr);
-  gap:17px;align-items:stretch;
+  gap:17px;align-items:center;
 }
 .why-intro{padding:12px 12px 12px 0}
 .why-intro h2{
@@ -377,7 +416,7 @@ button,input{font:inherit}
 
 .why-card{
   position:relative;overflow:hidden;
-  padding:24px;border:1px solid var(--line);
+  align-self:center;height:185px;padding:20px;border:1px solid var(--line);
   border-radius:15px;background:#fff;
   box-shadow:0 7px 18px rgba(0,0,0,.025);
   transition:.28s ease;
@@ -388,7 +427,7 @@ button,input{font:inherit}
   transform:scaleX(0);transform-origin:left;
   transition:.28s ease;
 }
-.why-card svg{width:31px;height:31px;margin-bottom:23px;transition:.25s ease}
+.why-card svg{width:27px;height:27px;margin-bottom:15px;transition:.25s ease}
 .why-card h3{font-size:12px;text-transform:uppercase;margin-bottom:8px}
 .why-card p{font-size:11px;color:var(--muted)}
 .why-card:hover{
@@ -399,15 +438,23 @@ button,input{font:inherit}
 .why-card:hover:before{transform:scaleX(1)}
 .why-card:hover svg{color:var(--orange);transform:rotate(-6deg) scale(1.08)}
 
-.footer{padding:48px 0 22px;color:#fff;background:#101010}
+.footer{padding:52px 0 24px;color:#fff;background:#101010}
 .footer-grid{
-  display:grid;grid-template-columns:1.2fr repeat(4,1fr) 1.3fr;
-  gap:29px;
+  display:grid;grid-template-columns:1.35fr .8fr .95fr 1.15fr;
+  gap:30px;
 }
-.footer-logo{width:102px;margin-bottom:16px}
-.footer p{font-size:11px;color:#aaa}
-.footer h3{font-size:10px;text-transform:uppercase;margin-bottom:14px}
-.footer a{display:block;font-size:10px;color:#aaa;margin:8px 0;transition:.2s ease}
+.footer-grid>div:first-child{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding-bottom:27px;border-bottom:1px solid rgba(255,255,255,.1);text-align:center}
+.footer-grid>div:nth-child(4){display:none}
+.footer-grid>div:nth-child(5){display:block;grid-column:4;grid-row:2}
+.footer-grid>div:nth-child(6){grid-column:1;grid-row:2}
+.footer-grid>div:nth-child(2){grid-column:2;grid-row:2}
+.footer-grid>div:nth-child(3){grid-column:3;grid-row:2}
+.footer-logo{width:230px;margin:0;flex:0 0 auto}
+.footer-logo img{display:block;width:100%}
+.footer-grid>div:first-child p{display:none}
+.footer p{font-size:16px;line-height:1.45;color:#aaa}
+.footer h3{font-size:12px;text-transform:uppercase;margin-bottom:16px}
+.footer a{display:block;font-size:12px;color:#aaa;margin:10px 0;transition:.2s ease}
 .footer a:hover{color:var(--orange);transform:translateX(3px)}
 .newsletter{
   margin-top:14px;display:flex;
@@ -417,10 +464,10 @@ button,input{font:inherit}
 .newsletter input{
   flex:1;min-width:0;padding:0 15px;
   border:0;outline:none;color:#fff;background:transparent;
-  font-size:11px;
+  font-size:12px;
 }
 .newsletter button{
-  width:44px;height:44px;border:0;
+  width:48px;height:48px;border:0;
   color:#fff;background:var(--orange);
   cursor:pointer;font-size:18px;transition:.2s ease;
 }
@@ -431,6 +478,35 @@ button,input{font:inherit}
   border-top:1px solid rgba(255,255,255,.1);
   color:#777;font-size:9px;
 }
+
+/* Shopify-style cart drawer */
+.product-image::after{display:none}
+.add-cart-btn{position:absolute;left:50%;bottom:16px;z-index:3;min-width:138px;padding:12px 16px;border:0;border-radius:999px;color:#fff;background:#171717;cursor:pointer;font:900 10px/1 Arial,sans-serif;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;opacity:0;transform:translate(-50%,12px);transition:.25s ease;box-shadow:0 12px 22px rgba(0,0,0,.18)}
+.add-cart-btn:hover{background:var(--orange);transform:translate(-50%,0) scale(1.03)}
+.product-card:hover .add-cart-btn{opacity:1;transform:translate(-50%,0)}
+.cart-count.is-empty{display:none}
+.cart-overlay{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.38);opacity:0;visibility:hidden;transition:.3s ease}
+.cart-drawer{position:fixed;right:0;top:0;bottom:0;z-index:51;width:min(430px,100%);display:flex;flex-direction:column;background:#fff;box-shadow:-20px 0 50px rgba(0,0,0,.18);transform:translateX(105%);transition:transform .38s cubic-bezier(.2,.7,.2,1)}
+body.cart-open{overflow:hidden}body.cart-open .cart-overlay{opacity:1;visibility:visible}body.cart-open .cart-drawer{transform:translateX(0)}
+.cart-drawer-head{display:flex;align-items:center;justify-content:space-between;padding:25px 25px 21px;border-bottom:1px solid var(--line)}
+.cart-drawer-head h2{font-family:"Arial Black",Impact,Arial,sans-serif;font-size:25px;letter-spacing:-.04em;text-transform:uppercase}
+.drawer-close{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:#fff;cursor:pointer;font-size:24px;line-height:1;transition:.2s ease}.drawer-close:hover{color:#fff;background:#111;border-color:#111;transform:rotate(90deg)}
+.cart-items{flex:1;overflow:auto;padding:22px 25px}.cart-empty{padding-top:84px;color:var(--muted);text-align:center}.cart-empty svg{width:40px;height:40px;margin-bottom:14px;color:var(--orange)}
+.cart-line{display:grid;grid-template-columns:78px 1fr auto;gap:14px;padding:0 0 18px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.cart-line img{width:78px;height:78px;object-fit:contain;border-radius:10px;background:var(--soft)}.cart-line h3{font-size:12px;line-height:1.25;text-transform:uppercase}.cart-line p{margin-top:7px;color:var(--orange);font-size:12px;font-weight:900}
+.cart-quantity{display:flex;align-items:center;gap:10px;margin-top:12px}.cart-quantity button{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;background:#fff;cursor:pointer;font-size:15px}.cart-quantity span{min-width:11px;text-align:center;font-size:12px;font-weight:800}
+.cart-remove{align-self:start;border:0;background:transparent;color:#888;cursor:pointer;font-size:19px}.cart-remove:hover{color:var(--orange)}
+.cart-drawer-foot{padding:21px 25px 27px;border-top:1px solid var(--line);background:#fcfbfa}.cart-total{display:flex;justify-content:space-between;margin-bottom:17px;font-size:13px;font-weight:900;text-transform:uppercase}.cart-total strong{font-size:18px}
+.checkout-btn{width:100%;min-height:52px;border:0;border-radius:999px;color:#fff;background:var(--orange);cursor:pointer;font-size:11px;font-weight:900;text-transform:uppercase;transition:.2s ease}.checkout-btn:hover{background:var(--orange-dark);transform:translateY(-2px)}
+
+/* Readable type scale: body copy 16px, all small interface text at least 14px */
+.topbar,.nav a,.btn,.eyebrow,.view-all,.trust-item,.trust-item small,.info-card strong,.info-card small,.product-meta h3,.product-meta p,.product-meta strong,.category-card h3,.feature-item h3,.feature-item p,.why-card h3,.why-card p,.small-link,.footer h3,.footer a,.footer-bottom,.newsletter input,.cart-count,.add-cart-btn,.checkout-btn,.cart-line h3,.cart-line p,.cart-total,.cart-quantity span{font-size:14px!important}
+
+/* Four-card collection sliders */
+.carousel-shell{position:relative}.carousel-track{display:flex!important;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px 0 8px}.carousel-track::-webkit-scrollbar{display:none}
+#products .product-grid.carousel-track .product-card,#categories .category-grid.carousel-track .category-card{flex:0 0 calc((100% - 60px)/4);scroll-snap-align:start}
+#categories .category-grid.carousel-track .category-image{height:auto}.category-card h3{padding:17px;font-size:12px}
+.carousel-control{position:absolute;top:50%;z-index:4;width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:#111;background:rgba(255,255,255,.96);cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.1);transform:translateY(-50%);transition:.22s ease}.carousel-control svg{width:20px;height:20px}.carousel-control:hover{color:#fff;background:var(--orange);border-color:var(--orange);transform:translateY(-50%) scale(1.08)}.carousel-prev{left:-21px}.carousel-next{right:-21px}
 
 @media(max-width:1180px){
   .header-inner{grid-template-columns:170px 1fr auto}
@@ -452,7 +528,7 @@ button,input{font:inherit}
   .nav{display:none}
   .logo{justify-self:center;width:94px}
   .header-actions .icon-btn:nth-child(2){display:none}
-  .hero-inner{grid-template-columns:1fr;padding-top:43px}
+  .hero-inner{min-height:auto;grid-template-columns:1fr;padding-top:43px}
   .hero h1{font-size:clamp(50px,13vw,78px)}
   .hero-art{min-height:390px}
   .hero-art:before{width:410px;height:410px}
@@ -463,10 +539,13 @@ button,input{font:inherit}
   }
   .product-card{min-width:235px;scroll-snap-align:start}
   .product-card:last-child{display:block}
-  .feature-panel{grid-template-columns:1fr}
+  .feature-panel{grid-template-columns:1fr;padding-right:25px;background-size:auto 82%,auto,auto}
   .feature-list{grid-template-columns:repeat(2,1fr)}
   .feature-item:nth-child(odd){border-left:0}
   .footer-grid{grid-template-columns:repeat(2,1fr)}
+  #products .product-grid.carousel-track .product-card,#categories .category-grid.carousel-track .category-card{flex-basis:calc((100% - 14px)/2)}
+  #categories .category-grid.carousel-track .category-image{height:220px}
+  .carousel-prev{left:-10px}.carousel-next{right:-10px}
 }
 
 @media(max-width:640px){
@@ -493,6 +572,9 @@ button,input{font:inherit}
   .why-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column}
+  .cart-drawer-head,.cart-items,.cart-drawer-foot{padding-left:18px;padding-right:18px}
+  #products .product-grid.carousel-track .product-card,#categories .category-grid.carousel-track .category-card{flex-basis:82%}
+  .carousel-control{width:37px;height:37px}.carousel-prev{left:-6px}.carousel-next{right:-6px}
 }
 </style>
 </head>
@@ -524,11 +606,11 @@ button,input{font:inherit}
     <a href="#" class="logo"><img src="data:image/png;base64,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" alt="Sport Sense"></a>
 
     <nav class="nav">
-      <a href="#products">Trophies</a>
-      <a href="#products">Medals</a>
-      <a href="#products">Awards</a>
-      <a href="#categories">Custom Awards</a>
-      <a href="#">Apparel</a>
+      <a href="#" class="active">Home</a>
+      <a href="#products">Promotional Products</a>
+      <a href="#products">Trophies &amp; Awards</a>
+      <a href="#">Apparel &amp; Headwear</a>
+      <a href="#">Signage</a>
       <a href="#">Catalogues</a>
     </nav>
 
@@ -541,7 +623,7 @@ button,input{font:inherit}
       </button>
       <button class="icon-btn" aria-label="Cart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4h2l2 11h10l2-8H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg>
-        <span class="cart-count">2</span>
+        <span class="cart-count is-empty">0</span>
       </button>
     </div>
   </div>
@@ -636,7 +718,7 @@ button,input{font:inherit}
       <div>
         <h2>Built to <span>honor.</span><br>Made to inspire.</h2>
         <p>Every award tells a story. Make yours unforgettable.</p>
-        <a href="#" class="btn btn-secondary">Explore collection →</a>
+        <a href="collections.html" class="btn btn-secondary">Explore collection <span class="feature-arrow">→</span></a>
       </div>
 
       <div class="feature-list">
@@ -687,7 +769,7 @@ button,input{font:inherit}
       <div class="eyebrow">Why choose Sport Sense</div>
       <h2>Awards that speak <span>excellence.</span></h2>
       <p>We combine quality craftsmanship with outstanding service to deliver awards you’ll be proud to give.</p>
-      <a href="#" class="small-link">About us <i>→</i></a>
+      <a href="about.html" class="small-link">About us <i>→</i></a>
     </div>
 
     <article class="why-card">
@@ -717,7 +799,7 @@ button,input{font:inherit}
       <p>Premium trophies, medals and custom awards for every achievement.</p>
     </div>
     <div><h3>Shop</h3><a href="#">Trophies</a><a href="#">Medals</a><a href="#">Awards</a><a href="#">Custom Awards</a></div>
-    <div><h3>Information</h3><a href="#">About us</a><a href="#">How it works</a><a href="#">Engraving guide</a><a href="#">Shipping & delivery</a></div>
+    <div><h3>Policy</h3><a href="#">Privacy policy</a><a href="#">Terms &amp; conditions</a><a href="#">Shipping policy</a><a href="#">Returns policy</a></div>
     <div><h3>Customer service</h3><a href="#">Contact us</a><a href="#">FAQs</a><a href="#">Order tracking</a><a href="#">Returns</a></div>
     <div><h3>Contact us</h3><a href="#">1300 123 456</a><a href="#">info@sportsense.com.au</a><a href="#">Melbourne, Australia</a></div>
     <div>
@@ -732,6 +814,116 @@ button,input{font:inherit}
     <span>Privacy Policy · Terms & Conditions</span>
   </div>
 </footer>
+
+<div class="cart-overlay" data-cart-close></div>
+<aside class="cart-drawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="cart-drawer-head"><h2>Your cart</h2><button class="drawer-close" type="button" aria-label="Close cart" data-cart-close>×</button></div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-drawer-foot"><div class="cart-total"><span>Subtotal</span><strong id="cart-total">$0.00</strong></div><button class="checkout-btn" type="button">Secure checkout</button></div>
+</aside>
+
+<script>
+  (() => {
+    const assetPaths = [
+      'assets/product-gold-cup.png','assets/product-silver-cup.png','assets/product-crystal-peak.png',
+      'assets/product-classic-medal.png','assets/product-prestige-award.png'
+    ];
+    const cart = new Map();
+    const body = document.body;
+    const drawer = document.querySelector('.cart-drawer');
+    const itemsRoot = document.querySelector('#cart-items');
+    const totalRoot = document.querySelector('#cart-total');
+    const countRoot = document.querySelector('.cart-count');
+    const cartToggle = document.querySelector('button[aria-label="Cart"]');
+    const money = value => `$${value.toFixed(2)}`;
+
+    const openCart = () => { body.classList.add('cart-open'); drawer.setAttribute('aria-hidden', 'false'); };
+    const closeCart = () => { body.classList.remove('cart-open'); drawer.setAttribute('aria-hidden', 'true'); };
+
+    function renderCart() {
+      const entries = [...cart.values()];
+      const quantity = entries.reduce((sum, item) => sum + item.quantity, 0);
+      const total = entries.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      countRoot.textContent = quantity;
+      countRoot.classList.toggle('is-empty', quantity === 0);
+      totalRoot.textContent = money(total);
+      if (!entries.length) {
+        itemsRoot.innerHTML = '<div class="cart-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 4h2l2 11h10l2-8H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg><p>Your cart is empty.</p><p>Add an award to get started.</p></div>';
+        return;
+      }
+      itemsRoot.innerHTML = entries.map(item => `
+        <article class="cart-line">
+          <img src="${item.image}" alt="${item.name}">
+          <div><h3>${item.name}</h3><p>${money(item.price)}</p><div class="cart-quantity"><button type="button" data-cart-action="decrease" data-id="${item.id}" aria-label="Decrease quantity">−</button><span>${item.quantity}</span><button type="button" data-cart-action="increase" data-id="${item.id}" aria-label="Increase quantity">+</button></div></div>
+          <button class="cart-remove" type="button" data-cart-action="remove" data-id="${item.id}" aria-label="Remove ${item.name}">×</button>
+        </article>`).join('');
+    }
+
+    document.querySelectorAll('#products .product-card').forEach((card, index) => {
+      const button = document.createElement('button');
+      button.className = 'add-cart-btn';
+      button.type = 'button';
+      button.textContent = 'Add to cart +';
+      card.querySelector('.product-image').append(button);
+      button.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+        const id = String(index);
+        const name = card.querySelector('h3').textContent.trim();
+        const price = Number(card.querySelector('.product-meta strong').textContent.replace(/[^0-9.]/g, ''));
+        const existing = cart.get(id);
+        cart.set(id, existing ? {...existing, quantity: existing.quantity + 1} : {id, name, price, image: assetPaths[index], quantity: 1});
+        renderCart();
+        openCart();
+      });
+      card.addEventListener('click', event => {
+        if (event.target.closest('button')) return;
+        window.location.href = 'product-victory-cup.html';
+      });
+      card.style.cursor = 'pointer';
+    });
+
+    itemsRoot.addEventListener('click', event => {
+      const control = event.target.closest('[data-cart-action]');
+      if (!control) return;
+      const item = cart.get(control.dataset.id);
+      if (!item) return;
+      if (control.dataset.cartAction === 'increase') cart.set(item.id, {...item, quantity: item.quantity + 1});
+      if (control.dataset.cartAction === 'decrease') item.quantity > 1 ? cart.set(item.id, {...item, quantity: item.quantity - 1}) : cart.delete(item.id);
+      if (control.dataset.cartAction === 'remove') cart.delete(item.id);
+      renderCart();
+    });
+
+    cartToggle.addEventListener('click', openCart);
+    document.querySelectorAll('[data-cart-close]').forEach(control => control.addEventListener('click', closeCart));
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeCart(); });
+
+    ['#products .product-grid', '#categories .category-grid'].forEach(selector => {
+      const track = document.querySelector(selector);
+      if (!track) return;
+      track.classList.add('carousel-track');
+      const shell = document.createElement('div');
+      shell.className = 'carousel-shell';
+      track.parentNode.insertBefore(shell, track);
+      shell.append(track);
+      const icon = direction => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="${direction === 'prev' ? 'M15 18l-6-6 6-6' : 'M9 18l6-6-6-6'}"/></svg>`;
+      ['prev', 'next'].forEach(direction => {
+        const control = document.createElement('button');
+        control.className = `carousel-control carousel-${direction}`;
+        control.type = 'button';
+        control.setAttribute('aria-label', `${direction === 'prev' ? 'Previous' : 'Next'} products`);
+        control.innerHTML = icon(direction);
+        control.addEventListener('click', () => {
+          const card = track.firstElementChild;
+          const amount = card ? card.getBoundingClientRect().width + 20 : track.clientWidth * .8;
+          track.scrollBy({left: direction === 'next' ? amount : -amount, behavior: 'smooth'});
+        });
+        shell.append(control);
+      });
+    });
+    renderCart();
+  })();
+</script>
 
 </body>
 </html>
