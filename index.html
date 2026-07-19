@@ -623,6 +623,11 @@ body.cart-open{overflow:hidden}body.cart-open .cart-overlay{opacity:1;visibility
   .footer-menu a{display:block;max-height:0;margin:0;overflow:hidden;opacity:0;transform:translateY(-6px);transition:max-height .32s ease,margin .32s ease,opacity .22s ease,transform .32s ease}
   .footer-menu.is-open a{max-height:42px;margin:12px 0;opacity:1;transform:translateY(0)}
 }
+@media(max-width:900px){
+  html,body{max-width:100%;overflow-x:clip!important}
+  .site-header .nav.mobile-nav{right:0!important;transform:none!important;opacity:0;visibility:hidden;pointer-events:none;clip-path:inset(0 0 0 100%);transition:clip-path .28s ease,opacity .2s ease,visibility 0s linear .28s}
+  .site-header .nav.mobile-nav.is-open{opacity:1;visibility:visible;pointer-events:auto;clip-path:inset(0);transition:clip-path .28s ease,opacity .2s ease}
+}
 </style>
 </head>
 <body>
