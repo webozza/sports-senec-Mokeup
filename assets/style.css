@@ -719,6 +719,18 @@ body{
 /* Shipping progress state */
 .shipping-status{padding:16px 0 20px}.shipping-status>.shipping-status-head{display:flex;height:auto;align-items:center;justify-content:space-between;margin-bottom:10px;background:none}.shipping-status-head strong{font-size:12px}.shipping-status-head span{display:block;width:auto;height:auto;border-radius:0;background:none;color:var(--orange2);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.shipping-status>.shipping-progress{height:8px;overflow:hidden;border-radius:99px;background:#fff1d1}.shipping-status>.shipping-progress span{display:block;width:68%;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--orange),#ffd987) !important}.shipping-status>p{margin:9px 0 0;color:var(--muted);font-size:10px}
 
+/* Clear, readable service-category cards */
+.homecat:after{background:linear-gradient(180deg,rgba(16,16,16,.02) 18%,rgba(16,16,16,.28) 48%,rgba(16,16,16,.94) 100%)}
+.homecat-content{padding:34px;max-width:100%}.homecat-content .badge.orange{color:var(--ink);background:var(--orange);box-shadow:0 5px 14px rgba(0,0,0,.16)}
+.homecat h3{max-width:570px;font-size:clamp(34px,3.15vw,48px);line-height:.96;letter-spacing:-.045em;text-wrap:balance}.homecat p{max-width:440px;color:rgba(255,255,255,.88);font-size:13px}.category-link{margin-top:3px;color:#fff}
+@media(max-width:680px){.homecat-content{padding:26px}.homecat h3{font-size:34px}}
+
+/* Clear, readable service-category cards */
+.homecat:after{background:linear-gradient(180deg,rgba(16,16,16,.02) 18%,rgba(16,16,16,.28) 48%,rgba(16,16,16,.94) 100%)}
+.homecat-content{padding:34px;max-width:100%}.homecat-content .badge.orange{color:var(--ink);background:var(--orange);box-shadow:0 5px 14px rgba(0,0,0,.16)}
+.homecat h3{max-width:570px;font-size:clamp(34px,3.15vw,48px);line-height:.96;letter-spacing:-.045em;text-wrap:balance}.homecat p{max-width:440px;color:rgba(255,255,255,.88);font-size:13px}.category-link{margin-top:3px;color:#fff}
+@media(max-width:680px){.homecat-content{padding:26px}.homecat h3{font-size:34px}}
+
 /* Product page: compact start, no duplicate giant title block */
 .product-breadcrumb{
   border-bottom:1px solid var(--line);
