@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>SportSense — Club Performance Tee</title>
+  <meta name="description" content="Customise SportSense club apparel with clear artwork checks, minimum order guidance and lead-time information before production.">
   <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -82,7 +83,16 @@
             <select id="method"><option>Sublimation</option><option>Heat Transfer</option><option>Embroidery</option><option>Screen Printing</option></select>
           </div>
 
-          <div class="artbox pdp-artbox"><h3 id="arttitle">Artwork checklist</h3><ul class="artlist" id="artlist"></ul></div>
+          <div class="artbox pdp-artbox">
+            <h3 id="arttitle">Artwork checklist</h3>
+            <ul class="artlist" id="artlist"></ul>
+            <label class="pdp-upload" for="artwork-file">
+              <span>Upload logo or artwork</span>
+              <input id="artwork-file" type="file" accept=".ai,.eps,.svg,.pdf,.png,.jpg,.jpeg" aria-describedby="artwork-upload-hint artwork-upload-status">
+              <small id="artwork-upload-hint">Accepted formats change with your selected decoration method.</small>
+            </label>
+            <p class="pdp-upload-status" id="artwork-upload-status" aria-live="polite">No file selected — we will review every file before production.</p>
+          </div>
 
           <div class="productcta pdp-purchase-row">
             <div class="qty pdp-qty"><button type="button" data-minus aria-label="Decrease quantity">−</button><input value="1" aria-label="Quantity"><button type="button" data-plus aria-label="Increase quantity">+</button></div>
