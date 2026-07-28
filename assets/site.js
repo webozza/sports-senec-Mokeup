@@ -1,5 +1,5 @@
 
-const menu=document.querySelector('.menubtn'),nav=document.querySelector('.nav');if(menu&&nav){menu.addEventListener('click',()=>nav.classList.toggle('open'));nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')))}
+const menu=document.querySelector('.menubtn'),nav=document.querySelector('.nav');
 document.querySelectorAll('.nav').forEach((navigation,navIndex)=>{
   const originalLinks=[...navigation.querySelectorAll('a')];
   if(!originalLinks.length)return;
@@ -36,6 +36,57 @@ document.querySelectorAll('.nav').forEach((navigation,navIndex)=>{
   window.addEventListener('resize',()=>{const current=tabs.findIndex((tab)=>tab.link.classList.contains('is-current'));setTab(current<0?activeIndex:current)},{passive:true});
 });
 
+/* Mobile navigation opens as a drawer, with its own backdrop and close control. */
+if(menu&&nav){
+  const menuBackdrop=document.createElement('button');
+  menuBackdrop.className='menu-drawer-backdrop';
+  menuBackdrop.type='button';
+  menuBackdrop.setAttribute('aria-label','Close menu');
+  document.body.append(menuBackdrop);
+  const menuClose=document.createElement('button');
+  menuClose.className='menu-drawer-close';
+  menuClose.type='button';
+  menuClose.setAttribute('aria-label','Close menu');
+  menuClose.textContent='×';
+  nav.prepend(menuClose);
+  menu.setAttribute('aria-label','Open menu');
+  menu.setAttribute('aria-expanded','false');
+  let menuScrollY=0;
+  const closeMenu=()=>{
+    const wasOpen=document.body.classList.contains('menu-drawer-open');
+    nav.classList.remove('open');
+    nav.querySelectorAll('.ss-category-subnav.is-open').forEach((panel)=>panel.classList.remove('is-open'));
+    nav.querySelectorAll('.ss-mobile-submenu-toggle[aria-expanded="true"]').forEach((toggle)=>toggle.setAttribute('aria-expanded','false'));
+    menuBackdrop.classList.remove('is-open');
+    document.body.classList.remove('menu-drawer-open');
+    if(wasOpen){
+      document.body.style.position='';
+      document.body.style.top='';
+      document.body.style.width='';
+      window.scrollTo(0,menuScrollY);
+    }
+    menu.setAttribute('aria-expanded','false');
+    menu.setAttribute('aria-label','Open menu');
+  };
+  const openMenu=()=>{
+    menuScrollY=window.scrollY;
+    nav.classList.add('open');
+    menuBackdrop.classList.add('is-open');
+    document.body.classList.add('menu-drawer-open');
+    document.body.style.position='fixed';
+    document.body.style.top=`-${menuScrollY}px`;
+    document.body.style.width='100%';
+    menu.setAttribute('aria-expanded','true');
+    menu.setAttribute('aria-label','Close menu');
+  };
+  menu.addEventListener('click',()=>nav.classList.contains('open')?closeMenu():openMenu());
+  menuClose.addEventListener('click',closeMenu);
+  menuBackdrop.addEventListener('click',closeMenu);
+  nav.addEventListener('click',(event)=>{if(event.target.closest('a'))closeMenu()});
+  document.addEventListener('keydown',(event)=>{if(event.key==='Escape'&&nav.classList.contains('open'))closeMenu()});
+  window.addEventListener('resize',()=>{if(window.innerWidth>920)closeMenu()},{passive:true});
+}
+
 /* Product-category shortcuts live below the two catalogue tabs on desktop. */
 const categorySubnavigation={
   'apparel.html':[['Tees','apparel.html?type=tees'],['Polos','apparel.html?type=polos'],['Hoodies','apparel.html?type=hoodies'],['Shorts','apparel.html?type=shorts'],['Teamwear','apparel.html?type=teamwear']],
@@ -55,7 +106,16 @@ document.querySelectorAll('.nav.ss-tab-nav').forEach((navigation)=>{
     panel.className='ss-category-subnav';
     panel.setAttribute('aria-label',`${link.textContent.trim()} categories`);
     panel.innerHTML=entries.map(([label,href])=>`<a href="${subnavBasePath}${href}">${label}</a>`).join('');
-    tabMenu.append(panel);menus.push(panel);
+    const group=document.createElement('div');
+    group.className='ss-mobile-nav-group';
+    const toggle=document.createElement('button');
+    toggle.className='ss-mobile-submenu-toggle';
+    toggle.type='button';
+    toggle.setAttribute('aria-label',`Show ${link.textContent.trim()} categories`);
+    toggle.setAttribute('aria-expanded','false');
+    toggle.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>';
+    tabMenu.insertBefore(group,link);
+    group.append(link,toggle,panel);menus.push(panel);
     let closeTimer;
     const open=()=>{
       clearTimeout(closeTimer);
@@ -73,6 +133,16 @@ document.querySelectorAll('.nav.ss-tab-nav').forEach((navigation)=>{
     link.addEventListener('pointerleave',close);
     panel.addEventListener('pointerenter',()=>clearTimeout(closeTimer));
     panel.addEventListener('pointerleave',close);
+    toggle.addEventListener('click',(event)=>{
+      event.preventDefault();
+      const willOpen=!panel.classList.contains('is-open');
+      menus.forEach((menu)=>{
+        menu.classList.remove('is-open');
+        menu.closest('.ss-mobile-nav-group')?.querySelector('.ss-mobile-submenu-toggle')?.setAttribute('aria-expanded','false');
+      });
+      panel.classList.toggle('is-open',willOpen);
+      toggle.setAttribute('aria-expanded',String(willOpen));
+    });
   });
   header.addEventListener('pointerleave',()=>{
     menus.forEach((menu)=>menu.classList.remove('is-open'));
